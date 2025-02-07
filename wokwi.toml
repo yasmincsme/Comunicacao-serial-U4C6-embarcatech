@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware = 'build/Comunicacao-serial-U4C6-embarcatech.hex'
+elf = 'build/Comunicacao-serial-U4C6-embarcatech.elf'
+
