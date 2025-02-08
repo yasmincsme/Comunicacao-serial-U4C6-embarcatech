@@ -35,7 +35,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Comunicacao-serial-U4C6-embarcatech Comunicacao-serial-U4C6-embarcatech.c matrix.c inc/ssd1)
+add_executable(Comunicacao-serial-U4C6-embarcatech Comunicacao-serial-U4C6-embarcatech.c matrix.c inc/ssd1306.c)
 
 pico_set_program_name(Comunicacao-serial-U4C6-embarcatech "Comunicacao-serial-U4C6-embarcatech")
 pico_set_program_version(Comunicacao-serial-U4C6-embarcatech "0.1")
