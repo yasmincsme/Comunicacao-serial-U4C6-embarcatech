@@ -58,6 +58,7 @@ target_include_directories(Comunicacao-serial-U4C6-embarcatech PRIVATE
 target_link_libraries(Comunicacao-serial-U4C6-embarcatech 
         hardware_i2c
         hardware_pio
+        pico_multicore
 )
 
 pico_add_extra_outputs(Comunicacao-serial-U4C6-embarcatech)
