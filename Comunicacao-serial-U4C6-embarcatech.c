@@ -103,9 +103,11 @@ static void gpio_irq_handler(uint gpio, uint32_t events) {
         if (current_time - last_press_A > DEBOUNCE_TIME_US) {  
             last_press_A = current_time;
 			if(green == 0) {
+				printf("Status do led verde: ligado");
 				green = 1;
 				gpio_put(RGB_GREEN, 1);
 			} else {
+				printf("Status do led verde: desligado");
 				green = 0;
 				gpio_put(RGB_GREEN, 0);
 			}
@@ -143,15 +145,29 @@ int main() {
     gpio_set_irq_enabled_with_callback(BUTTON_B, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
 	set_character_matrix(' ', led_buffer);
+
+	printf("Status do led verde: desligado");
+	printf("Status do led azul: desligado");
 	
   	while (true) {
 
 		scanf(" %c", &character);
 
+		if(green == 0) {
+			printf("Status do led verde: desligado");
+		} else {
+			printf("Status do led verde: ligado");
+		}
+
+		if(blue == 0) {
+			printf("Status do led azul: desligado");
+		} else {
+			printf("Status do led azul: ligado");
+		}
+
 		if(isdigit(character)) {
 			set_character_matrix(character, led_buffer);
 			set_one_led(LED_RED, LED_GREEN, LED_BLUE, led_buffer);
-
 		}
 
     	sleep_ms(1000);
