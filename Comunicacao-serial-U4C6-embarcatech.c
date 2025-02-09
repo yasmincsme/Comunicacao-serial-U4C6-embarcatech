@@ -30,49 +30,21 @@
 #define DEBOUNCE_TIME_US 200000  // 200ms
 #define TIME 100
 
-ssd1306_t ssd; 
-bool cor = true;
-char character;
+static char character;
 bool led_buffer[NUM_PIXELS] = {0};
 
 static volatile uint32_t last_press_A = 0;
 static volatile uint32_t last_press_B = 0;
 
-static volatile uint32_t blue = 0;
-static volatile uint32_t green = 0;
+static volatile uint8_t blue = 0;
+static volatile uint8_t green = 0;
 
-
-void SSD1306_task() {
+void read_task() {
 	while (true) {
 
-		//Limpa o display
-    	ssd1306_fill(&ssd, !cor);
+		scanf(" %c", &character);
 
-		//Desenha o caractere escolhido pelo usuário
-    	ssd1306_draw_string(&ssd, "Caractere", 12, 10); 
-    	ssd1306_draw_string(&ssd, "Escolhido", 12, 20); 
-		ssd1306_draw_string(&ssd, &character, 97, 15); 
-		ssd1306_line(&ssd, 96, 25, 107, 25, 1);
-		
-		//Desenha o status dos leds azul e verde
-		if(green == 0) {
-			ssd1306_draw_string(&ssd, "Led verde  0 ", 12, 35); 
-		} else {
-			ssd1306_draw_string(&ssd, "Led verde  1 ", 12, 35); 
-		}
-
-		if(blue == 0) {
-			ssd1306_draw_string(&ssd, "Led azul   0 ", 12, 45); 
-		} else {
-			ssd1306_draw_string(&ssd, "Led azul   1 ", 12, 45); 
-		}
-
-		//Desenha a borda do display
-		ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); 
-
-    	ssd1306_send_data(&ssd);
-
-    	sleep_ms(1000);
+    	sleep_ms(500);
   	}
 }
 
@@ -149,12 +121,15 @@ int main() {
 
 	PIO pio = pio0;
     int sm = 0;
+	ssd1306_t ssd; 
+	bool cor = true;
 
 	stdio_init_all();
 	ledrgb_init();
 	I2C_init();
 	SSD1306_init(&ssd);
-	multicore_launch_core1(SSD1306_task);
+
+	multicore_launch_core1(read_task);
 
 	uint offset = pio_add_program(pio, &ws2812_program);
     ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW);
@@ -162,32 +137,44 @@ int main() {
 	gpio_set_irq_enabled_with_callback(BUTTON_A, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
     gpio_set_irq_enabled_with_callback(BUTTON_B, GPIO_IRQ_EDGE_FALL, true, &gpio_irq_handler);
 
-	set_character_matrix(' ', led_buffer);
-
-	printf("Status do led verde: desligado");
-	printf("Status do led azul: desligado");
-	
   	while (true) {
 
-		scanf(" %c", &character);
+		//Limpa o display
+    	ssd1306_fill(&ssd, !cor);
 
+		//Desenha o caractere escolhido pelo usuário
+    	ssd1306_draw_string(&ssd, "Caractere", 12, 10); 
+    	ssd1306_draw_string(&ssd, "Escolhido", 12, 20); 
+		ssd1306_draw_string(&ssd, &character, 97, 15); 
+		ssd1306_line(&ssd, 96, 25, 107, 25, 1);
+		
+		//Desenha o status dos leds azul e verde
 		if(green == 0) {
+			ssd1306_draw_string(&ssd, "Led verde  0 ", 12, 35); 
 			printf("Status do led verde: desligado\n");
 		} else {
+			ssd1306_draw_string(&ssd, "Led verde  1 ", 12, 35); 
 			printf("Status do led verde: ligado\n");
 		}
 
 		if(blue == 0) {
+			ssd1306_draw_string(&ssd, "Led azul   0 ", 12, 45); 
 			printf("Status do led azul: desligado\n");
 		} else {
+			ssd1306_draw_string(&ssd, "Led azul   1 ", 12, 45); 
 			printf("Status do led azul: ligado\n");
 		}
 
-		if(isdigit(character)) {
-			set_character_matrix(character, led_buffer);
-			set_one_led(LED_RED, LED_GREEN, LED_BLUE, led_buffer);
-		}
+		//Desenha a borda do display
+		ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); 
 
+		//Atualização do display
+    	ssd1306_send_data(&ssd);
+
+		//Desenho do caractere na matriz de leds
+		set_character_matrix(character, led_buffer);
+		set_one_led(LED_RED, LED_GREEN, LED_BLUE, led_buffer);
+		
     	sleep_ms(1000);
   	}
 }
