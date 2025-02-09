@@ -16,9 +16,9 @@
 #define I2C_SCL 15
 #define endereco 0x3C
 
-#define LED_RED 100
-#define LED_GREEN 100
-#define LED_BLUE 100
+#define LED_RED 50
+#define LED_GREEN 0
+#define LED_BLUE 0
 
 #define RGB_RED 13
 #define RGB_GREEN 11

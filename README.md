@@ -154,41 +154,29 @@ Para exibir um caractere, o código precisaria de uma função para buscar o car
 
 - **Descrição:** Visualização dos caracteres de `0` à `9` no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
 
-**Teste no Software:**  
-![Demonstração no software](docs/ativ2-vid1.gif)
-
 **Teste no Hardware:**  
-![Demostração no hardware](docs/hardware-ativ2-vid1.gif)
+![Demostração no hardware](docs/num.gif)
 
 ### **2. Visualização de Letras Maiúsculas**
 
 - **Descrição:** Visualização das **letras maiúsculas** do alfabeto no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
 
-**Teste no Software:**  
-![Demonstração no software](docs/ativ2-vid2.gif)
-
 **Teste no Hardware:**  
-![Demostração no hardware](docs/hardware-ativ2-vid2.gif)
+![Demostração no hardware](docs/max.gif)
 
 ### **3. Visualização de Letras Minúsculas**
 
 - **Descrição:** Visualização das **letras minúsculas** do alfabeto no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
 
-**Teste no Software:**  
-![Demonstração no software](docs/ativ2-vid3.gif)
-
 **Teste no Hardware:**  
-![Demostração no hardware](docs/hardware-ativ2-vid3.gif)
+![Demostração no hardware](docs/min.gif)
 
 ### **3. Visualização do status dos LEDS Verde e Azul**
 
 - **Descrição:** Para este teste, os dois LEDS são postos em nível lógico alto através da interação com os **botões A e B** e, depois, ambos são desligados.
 
-**Teste no Software:**  
-![Demonstração no software](docs/ativ2-vid3.gif)
-
 **Teste no Hardware:**  
-![Demostração no hardware](docs/hardware-ativ2-vid3.gif)
+![Demostração no hardware](docs/leds.gif)
 
 ## Vídeo de Demonstração
 

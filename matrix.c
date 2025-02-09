@@ -64,9 +64,9 @@ void set_character_matrix(char character, bool *led_buffer) {
     case '5': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 1, 
-            1, 0, 0, 0, 0, 
-            0, 1, 1, 1, 1, 
             0, 0, 0, 0, 1, 
+            0, 1, 1, 1, 1, 
+            1, 0, 0, 0, 0, 
             1, 1, 1, 1, 1
         }; 
         memcpy(led_buffer, pattern, sizeof(pattern));
