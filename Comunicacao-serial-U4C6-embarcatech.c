@@ -1,19 +1,28 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include "pico/stdlib.h"
 #include <pico/multicore.h>
+#include <ctype.h>
+#include "pico/stdlib.h"
 #include "hardware/i2c.h"
 #include "inc/ssd1306.h"
 #include "inc/font.h"
+#include "matrix.h"
+#include "ws2812.pio.h"
+#include "hardware/clocks.h"
 
 #define I2C_PORT i2c1
 #define I2C_SDA 14
 #define I2C_SCL 15
 #define endereco 0x3C
 
+#define LED_RED 1
+#define LED_GREEN 1
+#define LED_BLUE 1
+
 ssd1306_t ssd; 
 bool cor = true;
 char character;
+bool led_buffer[NUM_PIXELS] = {0};
 
 void SSD1306_task() {
 	while (true) {
@@ -49,14 +58,27 @@ void SSD1306_init(ssd1306_t* ssd) {
 
 int main() {
 
+	PIO pio = pio0;
+    int sm = 0;
+
 	stdio_init_all();
 	I2C_init();
 	SSD1306_init(&ssd);
 	multicore_launch_core1(SSD1306_task);
+
+	uint offset = pio_add_program(pio, &ws2812_program);
+    ws2812_program_init(pio, sm, offset, WS2812_PIN, 800000, IS_RGBW);
 	
   	while (true) {
 
 		scanf(" %c", &character);
+
+		if(isdigit(character)) {
+			uint8_t number = character - '0';
+			set_num_matrix(number, led_buffer);
+			set_one_led(LED_RED, LED_GREEN, LED_BLUE, led_buffer);
+
+		}
 
     	sleep_ms(1000);
   	}

@@ -77,7 +77,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
             0, 1, 0, 1, 0, 
             0, 1, 1, 1, 0, 
             0, 1, 0, 0, 0, 
-            0, 0, 0, 1, 0
+            0, 1, 1, 1, 0
         }; 
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
@@ -106,7 +106,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
     }
     case 9: {
         bool pattern[NUM_PIXELS] = {
-            0, 1, 0, 0, 0, 
+            0, 1, 1, 1, 0, 
             0, 0, 0, 1, 0, 
             0, 1, 1, 1, 0, 
             0, 1, 0, 1, 0, 

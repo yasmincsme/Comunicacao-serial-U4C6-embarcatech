@@ -44,6 +44,11 @@ pico_set_program_version(Comunicacao-serial-U4C6-embarcatech "0.1")
 pico_enable_stdio_uart(Comunicacao-serial-U4C6-embarcatech 1)
 pico_enable_stdio_usb(Comunicacao-serial-U4C6-embarcatech 1)
 
+# Generate PIO header from the .pio file
+file(MAKE_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/generated)
+pico_generate_pio_header(Comunicacao-serial-U4C6-embarcatech ${CMAKE_CURRENT_LIST_DIR}/ws2812.pio OUTPUT_DIR ${CMAKE_CURRENT_LIST_DIR}/generated)
+
+
 # Add the standard library to the build
 target_link_libraries(Comunicacao-serial-U4C6-embarcatech
         pico_stdlib
@@ -52,6 +57,7 @@ target_link_libraries(Comunicacao-serial-U4C6-embarcatech
 # Add the standard include files to the build
 target_include_directories(Comunicacao-serial-U4C6-embarcatech PRIVATE
         ${CMAKE_CURRENT_LIST_DIR}
+        ${CMAKE_CURRENT_LIST_DIR}/generated
 )
 
 # Add any user requested libraries
