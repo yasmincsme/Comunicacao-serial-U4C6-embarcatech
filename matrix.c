@@ -3,9 +3,9 @@
 #include <string.h>
 #include "matrix.h"
 
-void set_num_matrix(uint8_t number, bool *led_buffer) {
-    switch (number) {
-    case 0: {
+void set_character_matrix(char character, bool *led_buffer) {
+    switch (character) {
+    case '0': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 1, 0, 1, 0, 
@@ -16,7 +16,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 1: {
+    case '1': {
        bool pattern[NUM_PIXELS] = {
             0, 0, 1, 0, 0, 
             0, 0, 1, 0, 0, 
@@ -27,7 +27,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 2: {
+    case '2': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 1, 0, 0, 0, 
@@ -38,7 +38,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 3: {
+    case '3': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 0, 0, 1, 0, 
@@ -49,7 +49,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 4: {
+    case '4': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 0, 0, 0, 
             0, 0, 0, 1, 0, 
@@ -60,7 +60,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 5: {
+    case '5': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 0, 0, 1, 0, 
@@ -71,7 +71,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 6: {
+    case '6': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 1, 0, 1, 0, 
@@ -82,18 +82,18 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 7: {
+    case '7': {
         bool pattern[NUM_PIXELS] = {
-            0, 1, 0, 0, 0, 
-            0, 0, 0, 1, 0, 
             0, 1, 0, 0, 0, 
             0, 0, 0, 1, 0, 
+            0, 1, 0, 0, 0, 
+            0, 0, 0, 1, 0, 
             0, 1, 1, 1, 0
         }; 
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 8: {
+    case '8': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 1, 0, 1, 0, 
@@ -104,7 +104,7 @@ void set_num_matrix(uint8_t number, bool *led_buffer) {
         memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
-    case 9: {
+    case '9': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
             0, 0, 0, 1, 0, 

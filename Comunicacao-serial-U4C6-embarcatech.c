@@ -74,8 +74,7 @@ int main() {
 		scanf(" %c", &character);
 
 		if(isdigit(character)) {
-			uint8_t number = character - '0';
-			set_num_matrix(number, led_buffer);
+			set_character_matrix(character, led_buffer);
 			set_one_led(LED_RED, LED_GREEN, LED_BLUE, led_buffer);
 
 		}
