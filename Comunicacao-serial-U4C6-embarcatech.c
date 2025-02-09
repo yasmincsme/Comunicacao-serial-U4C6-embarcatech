@@ -44,13 +44,33 @@ static volatile uint32_t green = 0;
 
 void SSD1306_task() {
 	while (true) {
-    	// Atualiza o conteúdo do display com animações
-    	ssd1306_fill(&ssd, !cor); // Limpa o display
-    	ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); // Desenha um retângulo
-    	ssd1306_draw_string(&ssd, "Caractere", 26, 10); // Desenha uma string
-    	ssd1306_draw_string(&ssd, "Escolhido", 26, 25); // Desenha uma string
-		ssd1306_draw_string(&ssd, &character, 60, 40); // Desenha uma string
-    	ssd1306_send_data(&ssd); // Atualiza o display
+
+		//Limpa o display
+    	ssd1306_fill(&ssd, !cor);
+
+		//Desenha o caractere escolhido pelo usuário
+    	ssd1306_draw_string(&ssd, "Caractere", 12, 10); 
+    	ssd1306_draw_string(&ssd, "Escolhido", 12, 20); 
+		ssd1306_draw_string(&ssd, &character, 97, 15); 
+		ssd1306_line(&ssd, 96, 25, 107, 25, 1);
+		
+		//Desenha o status dos leds azul e verde
+		if(green == 0) {
+			ssd1306_draw_string(&ssd, "Led verde  0 ", 12, 35); 
+		} else {
+			ssd1306_draw_string(&ssd, "Led verde  1 ", 12, 35); 
+		}
+
+		if(blue == 0) {
+			ssd1306_draw_string(&ssd, "Led azul   0 ", 12, 45); 
+		} else {
+			ssd1306_draw_string(&ssd, "Led azul   1 ", 12, 45); 
+		}
+
+		//Desenha a borda do display
+		ssd1306_rect(&ssd, 3, 3, 122, 58, cor, !cor); 
+
+    	ssd1306_send_data(&ssd);
 
     	sleep_ms(1000);
   	}
@@ -103,11 +123,9 @@ static void gpio_irq_handler(uint gpio, uint32_t events) {
         if (current_time - last_press_A > DEBOUNCE_TIME_US) {  
             last_press_A = current_time;
 			if(green == 0) {
-				printf("Status do led verde: ligado");
 				green = 1;
 				gpio_put(RGB_GREEN, 1);
 			} else {
-				printf("Status do led verde: desligado");
 				green = 0;
 				gpio_put(RGB_GREEN, 0);
 			}
@@ -154,15 +172,15 @@ int main() {
 		scanf(" %c", &character);
 
 		if(green == 0) {
-			printf("Status do led verde: desligado");
+			printf("Status do led verde: desligado\n");
 		} else {
-			printf("Status do led verde: ligado");
+			printf("Status do led verde: ligado\n");
 		}
 
 		if(blue == 0) {
-			printf("Status do led azul: desligado");
+			printf("Status do led azul: desligado\n");
 		} else {
-			printf("Status do led azul: ligado");
+			printf("Status do led azul: ligado\n");
 		}
 
 		if(isdigit(character)) {

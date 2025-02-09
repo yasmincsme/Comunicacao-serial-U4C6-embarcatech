@@ -4,19 +4,8 @@
 #include "matrix.h"
 
 void set_character_matrix(char character, bool *led_buffer) {
+   
     switch (character) {
-
-    case ' ': {
-        bool pattern[NUM_PIXELS] = {
-            0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0, 
-            0, 0, 0, 0, 0
-        };
-        memcpy(led_buffer, pattern, sizeof(pattern));
-        break;
-    }
     case '0': {
         bool pattern[NUM_PIXELS] = {
             0, 1, 1, 1, 0, 
@@ -128,6 +117,14 @@ void set_character_matrix(char character, bool *led_buffer) {
         break;
     }
     default:
+    bool pattern[NUM_PIXELS] = {
+            0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0
+        };
+        memcpy(led_buffer, pattern, sizeof(pattern));
         break;
     }
 }
