@@ -16,9 +16,9 @@
 #define I2C_SCL 15
 #define endereco 0x3C
 
-#define LED_RED 1
-#define LED_GREEN 1
-#define LED_BLUE 1
+#define LED_RED 100
+#define LED_GREEN 100
+#define LED_BLUE 100
 
 #define RGB_RED 13
 #define RGB_GREEN 11
@@ -145,8 +145,8 @@ int main() {
 		//Desenha o caractere escolhido pelo usuário
     	ssd1306_draw_string(&ssd, "Caractere", 12, 10); 
     	ssd1306_draw_string(&ssd, "Escolhido", 12, 20); 
-		ssd1306_draw_string(&ssd, &character, 97, 15); 
-		ssd1306_line(&ssd, 96, 25, 107, 25, 1);
+		ssd1306_draw_string(&ssd, &character, 99, 15); 
+		ssd1306_line(&ssd, 98, 25, 109, 25, 1);
 		
 		//Desenha o status dos leds azul e verde
 		if(green == 0) {
