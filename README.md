@@ -76,7 +76,7 @@ O caractere `'o'` tem o seguinte padrão:
 ```
 0  0  1  0  0  
 0  1  0  1  0  
-0  0  1  1  0  
+0  0  1  0  0  
 0  0  0  0  0  
 0  0  0  0  0  
 ```
@@ -148,3 +148,51 @@ A visualização no display OLED SSD1306 é feita por meio da manipulação dire
 
 Para exibir um caractere, o código precisaria de uma função para buscar o caractere na matriz `font[]` e desenhá-lo no buffer chamando `ssd1306_pixel` para cada bit correspondente.
 
+## Testes
+
+### **1. Visualização de Algarismos**
+
+- **Descrição:** Visualização dos caracteres de `0` à `9` no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
+
+**Teste no Software:**  
+![Demonstração no software](docs/ativ2-vid1.gif)
+
+**Teste no Hardware:**  
+![Demostração no hardware](docs/hardware-ativ2-vid1.gif)
+
+### **2. Visualização de Letras Maiúsculas**
+
+- **Descrição:** Visualização das **letras maiúsculas** do alfabeto no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
+
+**Teste no Software:**  
+![Demonstração no software](docs/ativ2-vid2.gif)
+
+**Teste no Hardware:**  
+![Demostração no hardware](docs/hardware-ativ2-vid2.gif)
+
+### **3. Visualização de Letras Minúsculas**
+
+- **Descrição:** Visualização das **letras minúsculas** do alfabeto no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
+
+**Teste no Software:**  
+![Demonstração no software](docs/ativ2-vid3.gif)
+
+**Teste no Hardware:**  
+![Demostração no hardware](docs/hardware-ativ2-vid3.gif)
+
+### **3. Visualização do status dos LEDS Verde e Azul**
+
+- **Descrição:** Para este teste, os dois LEDS são postos em nível lógico alto através da interação com os **botões A e B** e, depois, ambos são desligados.
+
+**Teste no Software:**  
+![Demonstração no software](docs/ativ2-vid3.gif)
+
+**Teste no Hardware:**  
+![Demostração no hardware](docs/hardware-ativ2-vid3.gif)
+
+## Vídeo de Demonstração
+
+[Clique aqui](https://youtu.be/tUTgC4oqwOw)
+
+## Autor
+Yasmin Cordeiro de Souza Meira
