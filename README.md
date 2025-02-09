@@ -154,29 +154,44 @@ Para exibir um caractere, o código precisaria de uma função para buscar o car
 
 - **Descrição:** Visualização dos caracteres de `0` à `9` no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
 
-**Teste no Hardware:**  
+<div align="center">
+
 ![Demostração no hardware](docs/num.gif)
+
+</div>
+
 
 ### **2. Visualização de Letras Maiúsculas**
 
 - **Descrição:** Visualização das **letras maiúsculas** do alfabeto no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
 
-**Teste no Hardware:**  
+<div align="center">
+
 ![Demostração no hardware](docs/max.gif)
+
+</div>
 
 ### **3. Visualização de Letras Minúsculas**
 
 - **Descrição:** Visualização das **letras minúsculas** do alfabeto no display OLED SSD1306 e na matriz de leds da placa bitdoglab.
 
-**Teste no Hardware:**  
+<div align="center">
+
 ![Demostração no hardware](docs/min.gif)
 
+</div>
+ 
 ### **3. Visualização do status dos LEDS Verde e Azul**
 
 - **Descrição:** Para este teste, os dois LEDS são postos em nível lógico alto através da interação com os **botões A e B** e, depois, ambos são desligados.
 
-**Teste no Hardware:**  
+<div align="center">
+
 ![Demostração no hardware](docs/leds.gif)
+![Publicação de mensagens](docs/msg.png)
+
+</div>
+
 
 ## Vídeo de Demonstração
 
